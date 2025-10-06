@@ -1,0 +1,33 @@
+<table class="table table-dark table-hover table-bordered">
+  <thead class="table-light text-dark">
+    <tr>
+      <th>#</th>
+      <th>Examen</th>
+      <th>Base</th>
+      <th>Descuento</th>
+      <th>IGV</th>
+      <th>Total</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for precio in precios %}
+    <tr>
+      <td>{{ forloop.counter }}</td>
+      <td>{{ precio.tipo_examen.nombre }}</td>
+      <td>S/. {{ precio.precio_base }}</td>
+      <td>{{ precio.descuento }}%</td>
+      <td>{{ precio.igv }}%</td>
+      <td><strong>S/. {{ precio.precio_final }}</strong></td>
+      <td>
+        <a href="{% url 'precios:detalle' precio.pk %}" class="btn btn-sm btn-info">👁️</a>
+        <a href="{% url 'precios:editar' precio.pk %}" class="btn btn-sm btn-warning">✏️</a>
+      </td>
+    </tr>
+    {% empty %}
+    <tr>
+      <td colspan="7" class="text-center text-muted">No hay precios registrados.</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>

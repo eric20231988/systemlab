@@ -1,0 +1,60 @@
+{% extends 'dashboard/base.html' %}
+
+{% block title %}Panel de control{% endblock %}
+
+{% block content %}
+<div class="card shadow-sm">
+  <div class="card-header bg-primary text-white">
+    <h5 class="mb-0">
+      <i class="bi bi-speedometer2 me-2"></i> Panel de control
+    </h5>
+  </div>
+  <div class="card-body">
+    <div class="row g-4">
+      <!-- Columna izquierda: listado o detalle -->
+      <div class="col-md-12" id="left-panel">
+        {% include 'pacientes/partials/panel_list.html' with pacientes=pacientes %}
+      </div>
+
+      <!-- Columna derecha: formularios dinámicos -->
+      <div class="col-md-4 d-none" id="right-col">
+      <div id="form-container"></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  function mostrarFormulario() {
+    const left = document.getElementById("left-panel");
+    const right = document.getElementById("right-col");
+    left.classList.remove("col-md-12");
+    left.classList.add("col-md-8");
+    right.classList.remove("d-none");
+  }
+
+  function ocultarFormulario() {
+    const left = document.getElementById("left-panel");
+    const right = document.getElementById("right-col");
+    document.getElementById("form-container").innerHTML = "";
+    right.classList.add("d-none");
+    left.classList.remove("col-md-8");
+    left.classList.add("col-md-12");
+  }
+
+  // Limpiar y restaurar layout al terminar operaciones (crear/editar/eliminar)
+  document.body.addEventListener("pacienteGuardado", function() {
+    ocultarFormulario();
+  });
+
+  // Mostrar formulario cuando HTMX carga contenido en el contenedor derecho
+  document.body.addEventListener("htmx:afterSwap", function(evt) {
+    if (evt.detail.target.id === "form-container" && evt.detail.target.innerHTML.trim() !== "") {
+      mostrarFormulario();
+    }
+  });
+</script>
+
+
+{% endblock %}

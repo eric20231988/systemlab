@@ -1,0 +1,14 @@
+{% extends 'dashboard/base.html' %}
+{% block title %}Eliminar Orden{% endblock %}
+{% block content %}
+<div class="container py-5 text-center">
+  <h2 class="text-danger">⚠️ ¿Estás seguro que deseas eliminar esta orden?</h2>
+  <p class="lead text-light">Paciente: <strong>{{ examen.paciente }}</strong></p>
+  <p class="text-light">Examen: <strong>{{ examen.tipo_examen.nombre }}</strong></p>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger btn-lg">🗑️ Confirmar Eliminación</button>
+    <a href="{% url 'registrar_examenes:listar' %}" class="btn btn-secondary btn-lg">Cancelar</a>
+  </form>
+</div>
+{% endblock %}

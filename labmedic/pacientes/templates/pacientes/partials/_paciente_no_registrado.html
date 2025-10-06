@@ -1,0 +1,6 @@
+<!-- templates/pacientes/partials/_paciente_no_registrado.html -->
+<div class="alert alert-warning mb-3">
+  <i class="bi bi-exclamation-triangle-fill me-2"></i>
+  No se encontró ningún paciente con DNI <strong>{{ dni }}</strong>.
+</div>
+{% include 'pacientes/partials/table_with_message.html' with pacientes=pacientes mensaje="No se encontró paciente con ese DNI" tipo_mensaje="warning" %}

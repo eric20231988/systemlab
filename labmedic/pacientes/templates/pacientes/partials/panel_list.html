@@ -1,0 +1,29 @@
+<!-- templates/pacientes/partials/panel_list.html -->
+<div class="d-flex align-items-center justify-content-between mb-3">
+  <h1 class="h5 mb-0">Pacientes</h1>
+  <button class="btn btn-gradient-primary"
+        hx-get="{% url 'pacientes:crear' %}"
+        hx-target="#form-container"
+        hx-swap="innerHTML">
+  <i class="bi bi-plus-lg"></i> Nuevo paciente
+</button>
+
+</div>
+
+<form class="mb-3"
+      method="get"
+      hx-get="{% url 'pacientes:verificar_dni' %}"
+      hx-target="#resultado-dni"
+      hx-swap="innerHTML">
+  <div class="input-group">
+    <input type="text" name="dni" class="form-control" placeholder="Verificar por DNI..." autocomplete="off" required>
+    <button class="btn btn-outline-primary" type="submit">
+      <i class="bi bi-search"></i> Buscar
+    </button>
+  </div>
+</form>
+
+
+<div id="resultado-dni" class="mb-3">
+  {% include 'pacientes/partials/table_with_message.html' with pacientes=pacientes mensaje=None tipo_mensaje=None %}
+</div>

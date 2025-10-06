@@ -1,0 +1,28 @@
+<table class="table table-hover">
+  <thead class="table-dark">
+    <tr>
+      <th>Nombre</th>
+      <th>Categoría</th>
+      <th>Precio Total</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for examen in examenes %}
+    <tr>
+      <td>{{ examen.nombre }}</td>
+      <td>{{ examen.categoria.nombre }}</td>
+      <td>S/ {{ examen.calcular_total }}</td>
+      <td>
+        <a href="{% url 'examenes:detalle' examen.pk %}" class="btn btn-sm btn-outline-info">Ver</a>
+        <a href="{% url 'examenes:editar' examen.pk %}" class="btn btn-sm btn-outline-warning">Editar</a>
+        <a href="{% url 'examenes:eliminar' examen.pk %}" class="btn btn-sm btn-outline-danger">Eliminar</a>
+      </td>
+    </tr>
+    {% empty %}
+    <tr>
+      <td colspan="4" class="text-center">No hay exámenes registrados.</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>

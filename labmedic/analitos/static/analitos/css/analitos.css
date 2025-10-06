@@ -1,0 +1,12 @@
+body {
+  background: linear-gradient(to right, #141e30, #243b55);
+  color: #f8f9fa;
+}
+
+.table-dark th, .table-dark td {
+  vertical-align: middle;
+}
+
+.btn {
+  border-radius: 8px;
+}

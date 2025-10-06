@@ -1,0 +1,37 @@
+<div class="modal fade show" id="deleteModal" tabindex="-1"
+     style="display:block; background:rgba(0,0,0,0.5);" aria-modal="true" role="dialog">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content shadow">
+      <div class="modal-header bg-danger text-white">
+        <h5 class="modal-title">
+          <i class="bi bi-exclamation-triangle"></i> Confirmar eliminación
+        </h5>
+        <button type="button" class="btn-close" onclick="cerrarModal()"></button>
+      </div>
+      <div class="modal-body text-center">
+        <p>¿Seguro que deseas eliminar a
+          <strong>{{ paciente.apellidos }}, {{ paciente.nombres }}</strong>?</p>
+      </div>
+      <div class="modal-footer">
+        <form method="post"
+              action="{% url 'pacientes:eliminar' paciente.pk %}"
+              hx-post="{% url 'pacientes:eliminar' paciente.pk %}"
+              hx-target="#left-panel"
+              hx-swap="innerHTML">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-danger">
+            <i class="bi bi-trash"></i> Eliminar
+          </button>
+          <button type="button" class="btn btn-secondary" onclick="cerrarModal()">Cancelar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function cerrarModal() {
+    const modal = document.getElementById("deleteModal");
+    if (modal) modal.remove();
+  }
+</script>

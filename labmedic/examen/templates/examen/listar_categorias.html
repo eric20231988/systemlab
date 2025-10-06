@@ -1,0 +1,27 @@
+{% extends 'examenes/base_examenes.html' %}
+{% block title %}Categorías de Exámenes{% endblock %}
+{% block content %}
+<h2>Categorías</h2>
+<a href="{% url 'examenes:crear_categoria' %}" class="btn btn-success mb-3">Nueva Categoría</a>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Descripción</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for categoria in categorias %}
+    <tr>
+      <td>{{ categoria.nombre }}</td>
+      <td>{{ categoria.descripcion }}</td>
+      <td>
+        <a href="{% url 'examenes:editar_categoria' categoria.pk %}" class="btn btn-sm btn-warning">Editar</a>
+        <a href="{% url 'examenes:eliminar_categoria' categoria.pk %}" class="btn btn-sm btn-danger">Eliminar</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'examenes/base_examenes.html' %}
+{% block title %}Detalle de Examen{% endblock %}
+{% block content %}
+<h2>{{ examen.nombre }}</h2>
+<p><strong>Categoría:</strong> {{ examen.categoria.nombre }}</p>
+<h4>Análisis incluidos:</h4>
+<ul class="list-group">
+  {% for analisis in examen.analisis.all %}
+  <li class="list-group-item">{{ analisis.nombre }}</li>
+  {% endfor %}
+</ul>
+<hr>
+<h5>Precio total (incluye IGV 18%):</h5>
+<p class="fs-4 fw-bold text-success">S/ {{ total }}</p>
+<a href="{% url 'examenes:listar' %}" class="btn btn-outline-primary mt-3">Volver</a>
+{% endblock %}

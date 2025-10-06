@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}Editar Resultado{% endblock %}
+{% block content %}
+<div class="container py-4">
+  <h2 class="text-light">✏️ Editar Resultado de {{ form.instance.analito.nombre }}</h2>
+  <form method="post">
+    {% csrf_token %}
+    <div class="row g-3">
+      <div class="col-md-6">{{ form.registro_examen.label_tag }}{{ form.registro_examen }}</div>
+      <div class="col-md-6">{{ form.analito.label_tag }}{{ form.analito }}</div>
+      <div class="col-md-6">{{ form.valor.label_tag }}{{ form.valor }}</div>
+    </div>
+    <div class="mt-4">
+      <button type="submit" class="btn btn-success">Actualizar</button>
+      <a href="{% url 'resultados_analitos:listar' %}" class="btn btn-secondary">Cancelar</a>
+    </div>
+  </form>
+</div>
+{% endblock %}

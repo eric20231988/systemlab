@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}Resultados de Analitos{% endblock %}
+{% block content %}
+<div class="container py-4">
+  <h2 class="text-light">📊 Resultados Registrados</h2>
+  <table class="table table-striped table-bordered table-dark mt-3">
+    <thead>
+      <tr>
+        <th>Paciente</th>
+        <th>Analito</th>
+        <th>Valor</th>
+        <th>Estado</th>
+        <th>Fecha</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for resultado in resultados %}
+      <tr>
+        <td>{{ resultado.registro_examen.paciente }}</td>
+        <td>{{ resultado.analito.nombre }}</td>
+        <td>{{ resultado.valor }}</td>
+        <td>
+          <span class="badge {% if resultado.estado == 'Normal' %}bg-success{% else %}bg-danger{% endif %}">
+            {{ resultado.estado }}
+          </span>
+        </td>
+        <td>{{ resultado.fecha_registro|date:"d/m/Y" }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

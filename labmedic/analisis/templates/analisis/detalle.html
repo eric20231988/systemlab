@@ -1,0 +1,20 @@
+{% extends 'analisis/base_analisis.html' %}
+{% block title %}Detalle de Análisis{% endblock %}
+{% block content %}
+<h2>{{ analisis.nombre }}</h2>
+<ul class="list-group">
+  <li class="list-group-item"><strong>Unidad:</strong> {{ analisis.unidad }}</li>
+  <li class="list-group-item"><strong>Precio:</strong> S/ {{ analisis.precio }}</li>
+  <li class="list-group-item"><strong>Descripción:</strong> {{ analisis.descripcion }}</li>
+</ul>
+<a href="{% url 'analisis:listar_analisis' %}" class="btn btn-outline-primary mt-3">Volver</a>
+{% endblock %}
+
+<h4>Historial de Precios</h4>
+<ul class="list-group">
+  {% for precio in analisis.precios.all %}
+  <li class="list-group-item">
+    {{ precio.monto }} {{ precio.moneda }} (desde {{ precio.fecha_inicio }}{% if precio.fecha_fin %} hasta {{ precio.fecha_fin }}{% endif %})
+  </li>
+  {% endfor %}
+</ul>

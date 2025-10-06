@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}Editar Especialidad{% endblock %}
+{% block content %}
+<div class="container py-4">
+  <h2 class="text-light">✏️ Editar {{ form.instance.nombre }}</h2>
+  <form method="post">
+    {% csrf_token %}
+    <div class="row g-3">
+      <div class="col-md-6">{{ form.nombre.label_tag }}{{ form.nombre }}</div>
+      <div class="col-md-12">{{ form.descripcion.label_tag }}{{ form.descripcion }}</div>
+      <div class="form-check mt-3">
+        {{ form.activa }} {{ form.activa.label_tag }}
+      </div>
+    </div>
+    <div class="mt-4">
+      <button type="submit" class="btn btn-success">Actualizar</button>
+      <a href="{% url 'especialidad:listar' %}" class="btn btn-secondary">Cancelar</a>
+    </div>
+  </form>
+</div>
+{% endblock %}

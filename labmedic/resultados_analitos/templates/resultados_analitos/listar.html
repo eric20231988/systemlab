@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Resultados de Analitos{% endblock %}
+{% block content %}
+<div class="container py-4">
+  <h2 class="text-light">🧪 Resultados de Analitos</h2>
+
+  <h4 class="text-light mt-4">📋 Resultados Pendientes</h4>
+  {% include 'resultados_analitos/partials/_tabla_resultados_pendientes.html' %}
+
+  <h4 class="text-light mt-5">✅ Resultados Completos</h4>
+  {% include 'resultados_analitos/partials/_tabla_resultados.html' %}
+
+  <a href="{% url 'resultados_analitos:crear' %}" class="btn btn-success mt-4">➕ Registrar Resultado</a>
+</div>
+{% endblock %}

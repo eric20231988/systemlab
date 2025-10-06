@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Crear Informe{% endblock %}
+{% block content %}
+<div class="container py-4">
+  <h2 class="text-light">📝 Crear Informe Clínico</h2>
+  <form method="post">
+    {% csrf_token %}
+    <div class="row g-3">
+      <div class="col-md-6">{{ form.registro_examen.label_tag }}{{ form.registro_examen }}</div>
+      <div class="col-md-12">{{ form.observaciones.label_tag }}{{ form.observaciones }}</div>
+    </div>
+    <div class="mt-4">
+      <button type="submit" class="btn btn-primary">Guardar</button>
+      <a href="{% url 'informes:listar' %}" class="btn btn-secondary">Cancelar</a>
+    </div>
+  </form>
+</div>
+{% endblock %}

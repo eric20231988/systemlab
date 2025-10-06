@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}Detalle del Analito{% endblock %}
+{% block content %}
+<div class="container py-4">
+  <h2 class="text-light">🧬 Detalle de {{ analito.nombre }}</h2>
+  <ul class="list-group list-group-flush bg-dark text-light">
+    <li class="list-group-item bg-dark">Unidad: {{ analito.unidad }}</li>
+    <li class="list-group-item bg-dark">Valor mínimo: {{ analito.valor_minimo }}</li>
+    <li class="list-group-item bg-dark">Valor máximo: {{ analito.valor_maximo }}</li>
+    <li class="list-group-item bg-dark">Análisis: {{ analito.analisis.nombre }}</li>
+    <li class="list-group-item bg-dark">Estado: 
+      <span class="badge {% if analito.activo %}bg-success{% else %}bg-secondary{% endif %}">
+        {% if analito.activo %}Activo{% else %}Inactivo{% endif %}
+      </span>
+    </li>
+  </ul>
+  <div class="mt-3">
+    <a href="{% url 'analitos:editar' analito.pk %}" class="btn btn-warning">✏️ Editar</a>
+    <a href="{% url 'analitos:listar' %}" class="btn btn-secondary">↩️ Volver</a>
+  </div>
+</div>
+{% endblock %}

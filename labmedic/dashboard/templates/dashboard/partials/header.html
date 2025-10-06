@@ -1,0 +1,15 @@
+{% load static %}
+<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+  <button class="btn btn-dark me-2" id="sidebarToggle" aria-label="Mostrar/Ocultar menú">
+    <i class="bi bi-list fs-4"></i>
+  </button>
+  <a class="navbar-brand px-3" href="{% url 'dashboard:panel' %}">Laboratorio</a>
+  <div class="navbar-nav ms-auto">
+    <div class="nav-item text-nowrap">
+      <form method="post" action="{% url 'accounts:logout' %}" class="d-inline">
+        {% csrf_token %}
+        <button type="submit" class="nav-link btn btn-link px-3 text-white">Cerrar sesión</button>
+      </form>
+    </div>
+  </div>
+</header>

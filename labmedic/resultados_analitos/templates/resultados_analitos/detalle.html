@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}Detalle de Resultado{% endblock %}
+{% block content %}
+<div class="container py-4">
+  <h2 class="text-light">🔍 Detalle de Resultado</h2>
+  <ul class="list-group list-group-flush bg-dark text-light">
+    <li class="list-group-item bg-dark">Paciente: {{ resultado.registro_examen.paciente }}</li>
+    <li class="list-group-item bg-dark">Analito: {{ resultado.analito.nombre }}</li>
+    <li class="list-group-item bg-dark">Valor: {{ resultado.valor }} {{ resultado.analito.unidad }}</li>
+    <li class="list-group-item bg-dark">Estado: 
+      <span class="badge {% if resultado.estado == 'normal' %}bg-success{% elif resultado.estado == 'alto' %}bg-danger{% elif resultado.estado == 'bajo' %}bg-warning{% else %}bg-secondary{% endif %}">
+        {{ resultado.estado|capfirst }}
+      </span>
+    </li>
+    <li class="list-group-item bg-dark">Fecha: {{ resultado.fecha_registro|date:"d/m/Y H:i" }}</li>
+  </ul>
+  <div class="mt-3">
+    <a href="{% url 'resultados_analitos:editar' resultado.pk %}" class="btn btn-warning">✏️ Editar</a>
+    <a href="{% url 'resultados_analitos:listar' %}" class="btn btn-secondary">↩️ Volver</a>
+  </div>
+</div>
+{% endblock %}

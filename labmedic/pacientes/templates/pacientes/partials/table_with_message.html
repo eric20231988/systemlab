@@ -1,0 +1,7 @@
+<!-- templates/pacientes/partials/table_with_message.html -->
+{% if mensaje %}
+  <div class="alert alert-{{ tipo_mensaje|default:'info' }} d-flex align-items-center mb-3" role="alert">
+    <div>{{ mensaje }}</div>
+  </div>
+{% endif %}
+{% include 'pacientes/partials/table.html' with pacientes=pacientes %}

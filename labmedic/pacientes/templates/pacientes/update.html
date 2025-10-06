@@ -1,0 +1,6 @@
+<!-- templates/pacientes/update.html -->
+{% extends 'pacientes/base_pacientes.html' %}
+{% block title %}Editar paciente{% endblock %}
+{% block content %}
+  {% include 'pacientes/partials/form.html' with form=form paciente=paciente %}
+{% endblock %}

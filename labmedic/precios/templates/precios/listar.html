@@ -1,0 +1,45 @@
+{% extends 'precios/base_precios.html' %}
+{% block title %}Listado de Precios{% endblock %}
+{% block content %}
+<h2>Precios de Análisis</h2>
+<a href="{% url 'precios:crear' %}" class="btn btn-success mb-3">Nuevo Precio</a>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Análisis</th>
+      <th>Monto</th>
+      <th>Moneda</th>
+      <th>Inicio</th>
+      <th>Fin</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for precio in page_obj %}
+    <tr>
+      <td>{{ precio.analisis.nombre }}</td>
+      <td>{{ precio.monto }}</td>
+      <td>{{ precio.moneda }}</td>
+      <td>{{ precio.fecha_inicio }}</td>
+      <td>{{ precio.fecha_fin|default:"-" }}</td>
+      <td>
+        <a href="{% url 'precios:detalle' precio.pk %}" class="btn btn-sm btn-info">Ver</a>
+        <a href="{% url 'precios:editar' precio.pk %}" class="btn btn-sm btn-warning">Editar</a>
+        <a href="{% url 'precios:eliminar' precio.pk %}" class="btn btn-sm btn-danger">Eliminar</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<nav>
+  <ul class="pagination">
+    {% if page_obj.has_previous %}
+      <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Anterior</a></li>
+    {% endif %}
+    <li class="page-item active"><span class="page-link">{{ page_obj.number }}</span></li>
+    {% if page_obj.has_next %}
+      <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Siguiente</a></li>
+    {% endif %}
+  </ul>
+</nav>
+{% endblock %}

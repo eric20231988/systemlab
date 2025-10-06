@@ -1,0 +1,23 @@
+<form method="post">
+  {% csrf_token %}
+  <div class="mb-3">
+    <label for="id_nombre" class="form-label">Nombre del Examen</label>
+    {{ form.nombre|add_class:"form-control" }}
+  </div>
+  <div class="mb-3">
+    <label for="id_categoria" class="form-label">Categoría</label>
+    {{ form.categoria|add_class:"form-select" }}
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Análisis incluidos</label>
+    <div class="form-check">
+      {% for checkbox in form.analisis %}
+        <div class="form-check mb-1">
+          {{ checkbox.tag }} {{ checkbox.choice_label }}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Guardar</button>
+  <a href="{% url 'examenes:listar' %}" class="btn btn-secondary">Cancelar</a>
+</form>

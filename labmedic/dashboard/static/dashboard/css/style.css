@@ -1,0 +1,73 @@
+/* ===== Sidebar base ===== */
+#sidebarMenu {
+    width: 240px;
+    min-height: 100vh;
+    background-color: #ffffff; /* Fondo claro */
+    transition: width 0.3s ease, background-color 0.3s ease;
+    overflow-x: hidden;
+    box-shadow: 2px 0 8px rgba(0,0,0,0.1);
+    border-right: 1px solid #e5e7eb; /* línea sutil */
+}
+
+/* ===== Estado colapsado ===== */
+#sidebarMenu.collapsed {
+    width: 70px;
+}
+
+/* Ocultar texto cuando está colapsado */
+#sidebarMenu.collapsed .link-text {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+}
+
+/* Centrar íconos en modo colapsado */
+#sidebarMenu.collapsed .nav-link {
+    justify-content: center;
+}
+
+/* ===== Estilo de enlaces ===== */
+#sidebarMenu .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #374151; /* gris oscuro elegante */
+    padding: 10px 15px;
+    border-radius: 8px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    font-weight: 500;
+}
+
+/* Hover elegante */
+#sidebarMenu .nav-link:hover {
+    background-color: #f0f4ff; /* azul muy claro */
+    color: #0d6efd; /* azul Bootstrap */
+}
+
+/* Activo */
+#sidebarMenu .nav-link.active {
+    background-color: #0d6efd;
+    color: #fff !important;
+}
+
+/* ===== Iconos ===== */
+#sidebarMenu .nav-link i {
+    font-size: 1.2rem;
+    min-width: 24px;
+    text-align: center;
+    color: inherit;
+}
+
+/* ===== Responsive: ocultar en móvil ===== */
+@media (max-width: 768px) {
+    #sidebarMenu {
+        position: fixed;
+        left: -240px;
+        top: 0;
+        height: 100%;
+        z-index: 1050;
+    }
+    #sidebarMenu.show {
+        left: 0;
+    }
+}

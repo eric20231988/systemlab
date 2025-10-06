@@ -1,0 +1,21 @@
+<table>
+  <thead>
+    <tr>
+      <th>Analito</th>
+      <th>Valor</th>
+      <th>Unidad</th>
+      <th>Estado</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for r in resultados %}
+    <tr>
+      <td>{{ r.analito.nombre }}</td>
+      <td>{{ r.valor }}</td>
+      <td>{{ r.analito.unidad }}</td>
+      <td>{{ r.estado|capfirst }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<p><strong>Observaciones:</strong> {{ informe.observaciones }}</p>

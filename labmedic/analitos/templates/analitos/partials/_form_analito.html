@@ -1,0 +1,25 @@
+<div class="row g-3">
+  <div class="col-md-6">
+    {{ form.nombre.label_tag }}
+    {{ form.nombre }}
+  </div>
+  <div class="col-md-6">
+    {{ form.unidad.label_tag }}
+    {{ form.unidad }}
+  </div>
+  <div class="col-md-6">
+    {{ form.valor_minimo.label_tag }}
+    {{ form.valor_minimo }}
+  </div>
+  <div class="col-md-6">
+    {{ form.valor_maximo.label_tag }}
+    {{ form.valor_maximo }}
+  </div>
+  <div class="col-md-12">
+    {{ form.analisis.label_tag }}
+    {{ form.analisis }}
+  </div>
+  <div class="form-check mt-3">
+    {{ form.activo }} {{ form.activo.label_tag }}
+  </div>
+</div>

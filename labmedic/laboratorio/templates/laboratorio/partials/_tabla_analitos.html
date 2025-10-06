@@ -1,0 +1,32 @@
+<table class="table table-dark table-hover table-bordered rounded shadow-sm">
+  <thead class="table-light text-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Unidad</th>
+      <th scope="col">Valor Mínimo</th>
+      <th scope="col">Valor Máximo</th>
+      <th scope="col">Estado</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for analito in analitos %}
+    <tr>
+      <th scope="row">{{ forloop.counter }}</th>
+      <td>{{ analito.nombre }}</td>
+      <td>{{ analito.unidad }}</td>
+      <td>{{ analito.valor_minimo }}</td>
+      <td>{{ analito.valor_maximo }}</td>
+      <td>
+        <span class="badge {% if analito.activo %}bg-success{% else %}bg-secondary{% endif %}">
+          {% if analito.activo %}Activo{% else %}Inactivo{% endif %}
+        </span>
+      </td>
+    </tr>
+    {% empty %}
+    <tr>
+      <td colspan="6" class="text-center text-muted">No hay analitos registrados.</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>

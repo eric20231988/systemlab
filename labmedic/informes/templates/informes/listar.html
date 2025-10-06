@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}Informes Clínicos{% endblock %}
+{% block content %}
+<div class="container py-4">
+  <h2 class="text-light">📋 Informes Generados</h2>
+  <table class="table table-dark table-hover table-bordered">
+    <thead class="table-light text-dark">
+      <tr>
+        <th>#</th>
+        <th>Paciente</th>
+        <th>Fecha</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for informe in informes %}
+      <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ informe.registro_examen.paciente }}</td>
+        <td>{{ informe.fecha_generacion|date:"d/m/Y H:i" }}</td>
+        <td>
+          <a href="{% url 'informes:detalle' informe.pk %}" class="btn btn-sm btn-info">👁️</a>
+          <a href="{% url 'informes:editar' informe.pk %}" class="btn btn-sm btn-warning">✏️</a>
+          <a href="{% url 'informes:generar_pdf' informe.pk %}" class="btn btn-sm btn-secondary">📄 PDF</a>
+          <a href="{% url 'informes:enviar_whatsapp' informe.pk %}" class="btn btn-sm btn-success">📲 WhatsApp</a>
+          <a href="{% url 'informes:eliminar' informe.pk %}" class="btn btn-sm btn-danger">🗑️</a>
+        </td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="4" class="text-center text-muted">No hay informes registrados.</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <a href="{% url 'informes:crear' %}" class="btn btn-success mt-3">➕ Nuevo Informe</a>
+</div>
+{% endblock %}

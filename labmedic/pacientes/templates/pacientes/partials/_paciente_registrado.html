@@ -1,0 +1,6 @@
+<!-- templates/pacientes/partials/_paciente_registrado.html -->
+<div class="alert alert-success mb-3">
+  <i class="bi bi-check-circle-fill me-2"></i>
+  El paciente <strong>{{ paciente.apellidos }}, {{ paciente.nombres }}</strong> con DNI <strong>{{ paciente.dni }}</strong> ya está registrado.
+</div>
+{% include 'pacientes/partials/table_with_message.html' with pacientes=pacientes mensaje="Paciente encontrado" tipo_mensaje="success" %}

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}Eliminar Resultado{% endblock %}
+{% block content %}
+<div class="container py-5 text-center">
+  <h2 class="text-danger">⚠️ ¿Confirmas que deseas eliminar este resultado?</h2>
+  <p class="lead text-light">Paciente: <strong>{{ resultado.registro_examen.paciente }}</strong></p>
+  <p class="text-light">Analito: <strong>{{ resultado.analito.nombre }}</strong></p>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger btn-lg">🗑️ Eliminar</button>
+    <a href="{% url 'resultados_analitos:listar' %}" class="btn btn-secondary btn-lg">Cancelar</a>
+  </form>
+</div>
+{% endblock %}

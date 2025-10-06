@@ -1,0 +1,11 @@
+{% extends 'examenes/base_examenes.html' %}
+{% block title %}Listado de Exámenes{% endblock %}
+{% block content %}
+<h2>Exámenes Clínicos</h2>
+<a href="{% url 'examenes:crear' %}" class="btn btn-success mb-3">Nuevo Examen</a>
+<a href="{% url 'examenes:exportar_pdf' %}" class="btn btn-outline-secondary mb-3">
+  Descargar PDF
+</a>
+
+{% include 'examenes/_partials/table_examen.html' with examenes=page_obj %}
+{% endblock %}

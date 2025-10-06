@@ -1,0 +1,18 @@
+asgiref==3.9.1
+distlib==0.4.0
+Django==5.2.5
+filelock==3.19.1
+numpy==2.3.2
+pandas==2.3.2
+platformdirs==4.3.8
+psycopg2-binary==2.9.10
+python-dateutil==2.9.0.post0
+pytz==2025.2
+six==1.17.0
+sqlparse==0.5.3
+tzdata==2025.2
+virtualenv==20.34.0
+django-filter>=2.4.0
+weasyprint>=60.1.0         # Para generar PDFs
+django-crispy-forms>=2.1.0 # Para formularios con Bootstrap
+django-widget-tweaks>=1.4.12 # Para personalizar widgets en templates

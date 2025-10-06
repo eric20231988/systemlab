@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}Panel de Laboratorio{% endblock %}
+{% block content %}
+<div class="container py-4">
+  <h2 class="text-center text-light mb-4">🧪 Panel de Laboratorio</h2>
+  <div class="row g-4">
+    {% include 'laboratorio/partials/_card_dashboard.html' with title="Analitos" url='analitos:listar' icon="🧬" %}
+    {% include 'laboratorio/partials/_card_dashboard.html' with title="Análisis" url='analisis:listar' icon="🧫" %}
+    {% include 'laboratorio/partials/_card_dashboard.html' with title="Exámenes" url='examen:listar' icon="📋" %}
+    {% include 'laboratorio/partials/_card_dashboard.html' with title="Resultados" url='resultados:listar' icon="📊" %}
+  </div>
+</div>
+{% endblock %}

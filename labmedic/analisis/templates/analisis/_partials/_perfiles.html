@@ -1,0 +1,7 @@
+<ul class="list-group">
+  {% for perfil in perfiles %}
+  <li class="list-group-item">
+    <strong>{{ perfil.nombre }}</strong>: {{ perfil.descripcion }}
+  </li>
+  {% endfor %}
+</ul>

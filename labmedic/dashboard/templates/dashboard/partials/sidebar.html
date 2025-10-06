@@ -1,0 +1,88 @@
+<nav id="sidebarMenu" class="sidebar bg-white border-end d-flex flex-column flex-shrink-0 p-3 shadow-sm" role="navigation" aria-label="Sidebar principal">
+  <!-- Brand -->
+  <div class="sidebar-header d-flex align-items-center justify-content-center mb-4">
+    <i class="bi bi-hospital fs-2 text-primary me-2"></i>
+    <span class="h4 fw-bold text-dark">LabMedic</span>
+  </div>
+
+  <hr class="border-secondary opacity-25">
+
+  <!-- Navegación -->
+  <ul class="nav nav-pills flex-column mb-auto" id="sidebarNav">
+
+    <!-- Dashboard -->
+    <li class="nav-item mb-2">
+      <a href="{% url 'dashboard:panel' %}"
+         class="nav-link d-flex align-items-center rounded-3 px-3 py-2 {% if request.resolver_match.namespace == 'dashboard' %}active bg-primary text-white{% else %}text-dark{% endif %}">
+        <i class="bi bi-speedometer2 me-2"></i>
+        <span class="link-text">Dashboard</span>
+      </a>
+    </li>
+
+    <!-- Accounts -->
+    <li class="nav-item mb-2">
+      <a href="{% url 'accounts:login' %}" class="nav-link d-flex align-items-center px-3 py-2 text-dark">
+        <i class="bi bi-person-circle me-2"></i>
+        <span class="link-text">Cuentas</span>
+      </a>
+    </li>
+
+    <!-- Pacientes -->
+    <li class="nav-item mb-2">
+      <a href="{% url 'pacientes:listar' %}" class="nav-link d-flex align-items-center px-3 py-2 text-dark">
+        <i class="bi bi-people me-2"></i>
+        <span class="link-text">Pacientes</span>
+      </a>
+    </li>
+
+    <!-- Laboratorio -->
+    <li class="nav-item mb-2">
+      <button class="nav-link d-flex align-items-center justify-content-between text-dark w-100 bg-transparent border-0 px-3 py-2 rounded-3"
+              data-bs-toggle="collapse" data-bs-target="#menuLaboratorio" aria-expanded="false">
+        <span><i class="bi bi-bezier me-2"></i> Laboratorio</span>
+        <i class="bi bi-chevron-down small"></i>
+      </button>
+      <div class="collapse" id="menuLaboratorio" data-bs-parent="#sidebarNav">
+        <ul class="list-unstyled ms-4 mt-2">
+          <li><a href="{% url 'analitos:listar' %}" class="nav-link text-dark d-flex align-items-center py-1 px-2"><i class="bi bi-droplet me-2"></i> Analitos</a></li>
+          <li><a href="{% url 'analisis:listar' %}" class="nav-link text-dark d-flex align-items-center py-1 px-2"><i class="bi bi-graph-up me-2"></i> Análisis</a></li>
+          <li><a href="{% url 'examen:listar' %}" class="nav-link text-dark d-flex align-items-center py-1 px-2"><i class="bi bi-journal-medical me-2"></i> Exámenes</a></li>
+          <li><a href="{% url 'registrar_examenes:listar_general' %}" class="nav-link text-dark d-flex align-items-center py-1 px-2"><i class="bi bi-clipboard-plus me-2"></i> Registrar Exámenes</a></li>
+          <li><a href="{% url 'resultados_analitos:listar' %}" class="nav-link text-dark d-flex align-items-center py-1 px-2"><i class="bi bi-clipboard-data me-2"></i> Resultados</a></li>
+        </ul>
+      </div>
+    </li>
+
+    <!-- Informes -->
+    <li class="nav-item mb-2">
+      <a href="{% url 'informes:listar' %}" class="nav-link d-flex align-items-center px-3 py-2 text-dark">
+        <i class="bi bi-file-earmark-text me-2"></i>
+        <span class="link-text">Informes</span>
+      </a>
+    </li>
+
+    <!-- Especialidades -->
+    <li class="nav-item mb-2">
+      <a href="{% url 'especialidad:listar' %}" class="nav-link d-flex align-items-center px-3 py-2 text-dark">
+        <i class="bi bi-award me-2"></i>
+        <span class="link-text">Especialidades</span>
+      </a>
+    </li>
+
+    <!-- Precios -->
+    <li class="nav-item mb-2">
+      <a href="{% url 'precios:listar' %}" class="nav-link d-flex align-items-center px-3 py-2 text-dark">
+        <i class="bi bi-cash-coin me-2"></i>
+        <span class="link-text">Precios</span>
+      </a>
+    </li>
+
+  </ul>
+
+  <hr class="border-secondary opacity-25 mt-auto">
+
+  <!-- Footer/versión -->
+  <div class="text-center text-muted small">
+    <span>v1.0 • © {{ now|date:"Y" }}</span>
+  </div>
+</nav>

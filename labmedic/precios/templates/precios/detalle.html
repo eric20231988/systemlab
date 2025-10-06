@@ -1,0 +1,12 @@
+{% extends 'precios/base_precios.html' %}
+{% block title %}Detalle de Precio{% endblock %}
+{% block content %}
+<h2>{{ precio.analisis.nombre }}</h2>
+<ul class="list-group">
+  <li class="list-group-item"><strong>Monto:</strong> {{ precio.monto }} {{ precio.moneda }}</li>
+  <li class="list-group-item"><strong>Inicio:</strong> {{ precio.fecha_inicio }}</li>
+  <li class="list-group-item"><strong>Fin:</strong> {{ precio.fecha_fin|default:"-" }}</li>
+</ul>
+<a href="{% url 'precios:listar' %}" class="btn btn-outline-primary mt-3">Volver</a>
+{% endblock %}
+

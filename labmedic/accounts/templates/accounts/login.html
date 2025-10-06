@@ -1,0 +1,70 @@
+{% extends 'accounts/base_auth.html' %}
+{% load widget_tweaks %}
+{% block title %}Iniciar sesión{% endblock %}
+
+{% block content %}
+<style>
+    .login-wrapper {
+        min-height: calc(100vh - 120px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .login-card {
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        padding: 2rem;
+        width: 100%;
+        max-width: 400px;
+    }
+    .login-card .form-control {
+        border-radius: 8px;
+    }
+    .login-card .btn {
+        border-radius: 8px;
+    }
+    .brand-logo {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #0d6efd;
+    }
+</style>
+
+<div class="login-wrapper">
+    <div class="login-card">
+        <div class="text-center mb-4">
+            <i class="bi bi-hospital brand-logo"></i>
+            <h4 class="mt-2">LabMedic</h4>
+            <p class="text-muted">Inicia sesión para continuar</p>
+        </div>
+
+        <form method="post" novalidate>
+            {% csrf_token %}
+            {% if form.non_field_errors %}
+                <div class="alert alert-danger">
+                    {{ form.non_field_errors }}
+                </div>
+            {% endif %}
+
+            <div class="mb-3">
+                <label for="id_username" class="form-label">Usuario</label>
+                {% render_field form.username class="form-control" placeholder="Ingresa tu usuario" %}
+            </div>
+
+            <div class="mb-3">
+                <label for="id_password" class="form-label">Contraseña</label>
+                {% render_field form.password class="form-control" placeholder="Ingresa tu contraseña" %}
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">
+                <i class="bi bi-box-arrow-in-right me-1"></i> Entrar
+            </button>
+        </form>
+
+        <div class="text-center mt-3">
+            <small class="text-muted">© {{ now|date:"Y" }} LabMedic</small>
+        </div>
+    </div>
+</div>
+{% endblock %}

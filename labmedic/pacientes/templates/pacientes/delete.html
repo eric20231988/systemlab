@@ -1,0 +1,18 @@
+{% extends 'pacientes/base_pacientes.html' %}
+{% block title %}Eliminar paciente{% endblock %}
+{% block content %}
+<div class="card shadow-sm">
+  <div class="card-body text-center">
+    <p>¿Seguro que deseas eliminar a
+      <strong>{{ paciente.apellidos }}, {{ paciente.nombres }}</strong>?</p>
+
+    <form method="post" action="{% url 'pacientes:eliminar' paciente.pk %}">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-danger">
+        <i class="bi bi-trash"></i> Eliminar
+      </button>
+      <a href="{% url 'pacientes:listar' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+  </div>
+</div>
+{% endblock %}

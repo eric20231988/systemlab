@@ -1,0 +1,8 @@
+{% extends 'dashboard/base.html' %}
+{% block title %}Cerrar sesión{% endblock %}
+{% block content %}
+<div class="container mt-5 text-center">
+    <h3 class="mb-4">Has cerrado sesión</h3>
+    <a href="{% url 'accounts:login' %}" class="btn btn-primary">Iniciar sesión</a>
+</div>
+{% endblock %}

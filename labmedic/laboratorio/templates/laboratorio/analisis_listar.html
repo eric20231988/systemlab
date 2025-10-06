@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}Lista de Análisis{% endblock %}
+{% block content %}
+<div class="container py-4">
+  <h2 class="text-light">🧫 Análisis Disponibles</h2>
+  <table class="table table-dark table-hover mt-3">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Categoría</th>
+        <th>Estado</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for analisis in analisis %}
+      <tr>
+        <td>{{ analisis.nombre }}</td>
+        <td>{{ analisis.categoria }}</td>
+        <td>
+          <span class="badge {% if analisis.activo %}bg-success{% else %}bg-secondary{% endif %}">
+            {% if analisis.activo %}Activo{% else %}Inactivo{% endif %}
+          </span>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

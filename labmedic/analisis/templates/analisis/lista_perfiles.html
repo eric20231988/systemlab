@@ -1,0 +1,51 @@
+{% extends 'analisis/base_analisis.html' %}
+{% block title %}Perfiles de Análisis{% endblock %}
+{% block content %}
+<h2>Perfiles de Análisis</h2>
+<form method="get" class="row g-3 mb-3">
+  <div class="col-md-4">
+    <input type="text" name="q" value="{{ query }}" class="form-control" placeholder="Buscar por nombre">
+  </div>
+  <div class="col-md-4">
+    <input type="text" name="tipo" value="{{ tipo }}" class="form-control" placeholder="Filtrar por tipo">
+  </div>
+  <div class="col-md-4">
+    <button type="submit" class="btn btn-outline-primary">Filtrar</button>
+  </div>
+</form>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Descripción</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for perfil in page_obj %}
+    <tr>
+      <td>{{ perfil.nombre }}</td>
+      <td>{{ perfil.descripcion }}</td>
+      <td>
+        <a href="{% url 'analisis:detalle_perfil' perfil.pk %}" class="btn btn-sm btn-info">Ver</a>
+        <a href="{% url 'analisis:editar_perfil' perfil.pk %}" class="btn btn-sm btn-warning">Editar</a>
+        <a href="{% url 'analisis:eliminar_perfil' perfil.pk %}" class="btn btn-sm btn-danger">Eliminar</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<nav>
+  <ul class="pagination">
+    {% if page_obj.has_previous %}
+      <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Anterior</a></li>
+    {% endif %}
+    <li class="page-item active"><span class="page-link">{{ page_obj.number }}</span></li>
+    {% if page_obj.has_next %}
+      <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Siguiente</a></li>
+    {% endif %}
+  </ul>
+</nav>
+{% endblock %}

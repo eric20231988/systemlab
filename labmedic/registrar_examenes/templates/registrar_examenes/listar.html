@@ -1,0 +1,30 @@
+{% extends 'dashboard/base.html' %}
+{% block title %}Órdenes de Examen{% endblock %}
+{% block content %}
+<div class="container py-4">
+  <h2 class="text-light">📑 Órdenes de Examen</h2>
+
+  <form method="get" class="row g-3 mb-4">
+    <div class="col-md-4">
+      {{ filter.form.paciente.label_tag }}
+      {{ filter.form.paciente }}
+    </div>
+    <div class="col-md-3">
+      {{ filter.form.estado.label_tag }}
+      {{ filter.form.estado }}
+    </div>
+    <div class="col-md-5">
+      {{ filter.form.fecha_creacion.label_tag }}
+      {{ filter.form.fecha_creacion }}
+    </div>
+    <div class="col-md-12">
+      <button type="submit" class="btn btn-primary">🔍 Filtrar</button>
+      <a href="{% url 'registrar_examenes:listar_general' %}" class="btn btn-secondary">🔄 Limpiar</a>
+    </div>
+  </form>
+
+  {% include 'registrar_examenes/partials/_tabla_registrar_examene.html' %}
+  <a href="{% url 'registrar_examenes:crear' %}" class="btn btn-success mt-3">➕ Nueva Orden</a>}
+  <a href="{% url 'registrar_examenes:exportar_excel' %}" class="btn btn-outline-light">📤 Exportar a Excel</a>
+</div>
+{% endblock %}

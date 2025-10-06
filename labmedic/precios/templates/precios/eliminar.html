@@ -1,0 +1,10 @@
+{% extends 'precios/base_precios.html' %}
+{% block title %}Eliminar Precio{% endblock %}
+{% block content %}
+<h2>¿Eliminar precio de "{{ precio.analisis.nombre }}"?</h2>
+<form method="post">
+  {% csrf_token %}
+  <button type="submit" class="btn btn-danger">Eliminar</button>
+  <a href="{% url 'precios:listar' %}" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}

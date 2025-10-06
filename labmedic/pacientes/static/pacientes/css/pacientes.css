@@ -1,0 +1,23 @@
+.futuristic-card {
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.bg-gradient {
+  background: linear-gradient(90deg, #4e54c8, #8f94fb);
+}
+
+.btn-gradient-primary {
+  background: linear-gradient(90deg, #00c6ff, #0072ff);
+  color: #fff;
+  border: none;
+}
+
+.btn-gradient-primary:hover {
+  opacity: 0.9;
+  color: #fff;
+}
+
+.badge.bg-gradient {
+  background: linear-gradient(90deg, #ff758c, #ff7eb3);
+}

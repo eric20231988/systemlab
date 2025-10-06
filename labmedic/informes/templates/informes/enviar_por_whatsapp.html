@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}Enviar Informe por WhatsApp{% endblock %}
+{% block content %}
+<div class="container py-5 text-center">
+  <h2 class="text-light">📲 Enviar Informe por WhatsApp</h2>
+  <p class="lead text-light">Paciente: <strong>{{ informe.registro_examen.paciente }}</strong></p>
+  <p class="text-light">Este módulo simula el envío del informe por WhatsApp.</p>
+  <a href="{% url 'informes:generar_pdf' informe.pk %}" class="btn btn-outline-light">📄 Ver PDF</a>
+  <a href="{% url 'informes:listar' %}" class="btn btn-secondary">↩️ Volver</a>
+</div>
+{% endblock %}

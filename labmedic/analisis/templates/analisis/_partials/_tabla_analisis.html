@@ -1,0 +1,18 @@
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Unidad</th>
+      <th>Precio</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for analisis in analisis_list %}
+    <tr>
+      <td>{{ analisis.nombre }}</td>
+      <td>{{ analisis.unidad }}</td>
+      <td>S/ {{ analisis.precio }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>

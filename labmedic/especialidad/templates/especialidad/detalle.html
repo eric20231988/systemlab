@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}Detalle de Especialidad{% endblock %}
+{% block content %}
+<div class="container py-4">
+  <h2 class="text-light">🔍 Detalle de {{ especialidad.nombre }}</h2>
+  <ul class="list-group list-group-flush bg-dark text-light">
+    <li class="list-group-item bg-dark">Descripción: {{ especialidad.descripcion }}</li>
+    <li class="list-group-item bg-dark">Estado: 
+      <span class="badge {% if especialidad.activa %}bg-success{% else %}bg-secondary{% endif %}">
+        {% if especialidad.activa %}Activa{% else %}Inactiva{% endif %}
+      </span>
+    </li>
+  </ul>
+  <div class="mt-3">
+    <a href="{% url 'especialidad:editar' especialidad.pk %}" class="btn btn-warning">✏️ Editar</a>
+    <a href="{% url 'especialidad:listar' %}" class="btn btn-secondary">↩️ Volver</a>
+    <a href="{% url 'especialidad:eliminar' especialidad.pk %}" class="btn btn-danger">🗑️ Eliminar</a>
+
+  </div>
+</div>
+{% endblock %}

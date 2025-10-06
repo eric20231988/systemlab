@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}Detalle del Informe{% endblock %}
+{% block content %}
+<div class="container py-4">
+  <h2 class="text-light">🔍 Informe de {{ informe.registro_examen.paciente }}</h2>
+  <ul class="list-group list-group-flush bg-dark text-light">
+    <li class="list-group-item bg-dark">Fecha: {{ informe.fecha_generacion|date:"d/m/Y H:i" }}</li>
+    <li class="list-group-item bg-dark">Observaciones: {{ informe.observaciones }}</li>
+  </ul>
+  <div class="mt-3">
+    <a href="{% url 'informes:generar_pdf' informe.pk %}" class="btn btn-secondary">📄 Ver PDF</a>
+    <a href="{% url 'informes:listar' %}" class="btn btn-secondary">↩️ Volver</a>
+    <a href="{% url 'informes:generar_pdf' informe.pk %}" class="btn btn-secondary">📄 Ver PDF</a>
+    <a href="{% url 'informes:enviar_whatsapp' informe.pk %}" class="btn btn-success">📲 WhatsApp</a>
+    <a href="{% url 'informes:eliminar' informe.pk %}" class="btn btn-danger">🗑️ Eliminar</a>
+
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}Eliminar Especialidad{% endblock %}
+{% block content %}
+<div class="container py-5 text-center">
+  <h2 class="text-danger">⚠️ ¿Confirmas que deseas eliminar esta especialidad?</h2>
+  <p class="lead text-light">Nombre: <strong>{{ especialidad.nombre }}</strong></p>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger btn-lg">🗑️ Eliminar</button>
+    <a href="{% url 'especialidad:listar' %}" class="btn btn-secondary btn-lg">Cancelar</a>
+  </form>
+</div>
+{% endblock %}

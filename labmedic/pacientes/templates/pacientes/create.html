@@ -1,0 +1,6 @@
+<!-- templates/pacientes/create.html -->
+{% extends 'pacientes/base_pacientes.html' %}
+{% block title %}Nuevo paciente{% endblock %}
+{% block content %}
+  {% include 'pacientes/partials/form.html' with form=form paciente=None %}
+{% endblock %}

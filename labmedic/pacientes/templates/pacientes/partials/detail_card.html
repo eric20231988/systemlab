@@ -1,0 +1,53 @@
+<div class="card shadow-sm">
+  <div class="card-header bg-primary text-white">
+    <h5 class="mb-0">{{ paciente.apellidos }}, {{ paciente.nombres }}</h5>
+  </div>
+  <div class="card-body">
+    <dl class="row mb-0">
+      <dt class="col-sm-3">DNI</dt>
+      <dd class="col-sm-9">{{ paciente.dni|default:"—" }}</dd>
+
+      <dt class="col-sm-3">Fecha nacimiento</dt>
+      <dd class="col-sm-9">{{ paciente.fecha_nacimiento|date:"d/m/Y"|default:"—" }}</dd>
+
+      <dt class="col-sm-3">Sexo</dt>
+      <dd class="col-sm-9">{{ paciente.sexo|default:"—" }}</dd>
+
+      <dt class="col-sm-3">Teléfono</dt>
+      <dd class="col-sm-9">{{ paciente.telefono|default:"—" }}</dd>
+
+      <dt class="col-sm-3">Email</dt>
+      <dd class="col-sm-9">{{ paciente.email|default:"—" }}</dd>
+
+      <dt class="col-sm-3">Dirección</dt>
+      <dd class="col-sm-9">{{ paciente.direccion|default:"—" }}</dd>
+    </dl>
+  </div>
+  <div class="card-footer d-flex justify-content-between">
+    <!-- Botón volver a la lista -->
+    <button class="btn btn-sm btn-secondary"
+            hx-get="{% url 'pacientes:panel_list' %}"
+            hx-target="#left-panel"
+            hx-swap="innerHTML"
+            hx-trigger="click"
+            hx-on::afterSwap="ocultarFormulario()">
+      <i class="bi bi-arrow-left"></i> Volver a la lista
+    </button>
+
+    <div>
+      <button class="btn btn-sm btn-primary"
+              hx-get="{% url 'pacientes:editar' paciente.pk %}"
+              hx-target="#form-container"
+              hx-swap="innerHTML">
+        <i class="bi bi-pencil"></i> Editar
+      </button>
+      <button class="btn btn-sm btn-outline-danger"
+        hx-get="{% url 'pacientes:eliminar' paciente.pk %}"
+        hx-target="#form-container"
+        hx-swap="innerHTML">
+      <i class="bi bi-trash"></i> Eliminar
+      </button>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+{% extends 'analisis/base_analisis.html' %}
+{% block title %}Eliminar Perfil{% endblock %}
+{% block content %}
+<h2>¿Eliminar perfil "{{ perfil.nombre }}"?</h2>
+<form method="post">
+  {% csrf_token %}
+  <button type="submit" class="btn btn-danger">Eliminar</button>
+  <a href="{% url 'analisis:listar_perfiles' %}" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}
