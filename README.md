@@ -13,3 +13,31 @@ Este proyecto es parte del laboratorio de sistemas. Contiene scripts, configurac
 ```bash
 git clone https://github.com/eric20231988/systemlab.git
 cd systemlab
+
+
+
+Guárdalo como `README.md` en la raíz de tu repositorio.
+
+---
+
+## 🧹 2. Configurar `.gitignore`
+
+Este archivo evita que archivos innecesarios o sensibles se suban al repositorio. Aquí tienes un ejemplo para proyectos en Python:
+
+```gitignore
+# Entornos virtuales
+venv/
+.env/
+__pycache__/
+*.pyc
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de logs
+*.log
+
+# Archivos temporales
+*.swp
+*.bak
